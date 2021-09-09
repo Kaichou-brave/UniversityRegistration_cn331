@@ -8,8 +8,9 @@ from django.contrib.auth.decorators import login_required
 from .models import Course
 
 
+@login_required(login_url='users:login')
 def registration(request):
-    context = {'course': Course.objects.all(), 'enroll': Course.objects.filter(register=request.user)}
+    context = {'course': Course.objects.all().order_by('c_id'), 'enroll': Course.objects.filter(register=request.user)}
     return render(request, 'courses/registration-page.html', context)
 
 
@@ -23,6 +24,7 @@ def course(request, pk):
     return render(request, 'courses/single-course-info.html', {'course': courseObj})
 
 
+@login_required(login_url='users:login')
 def book(request, key):
     course = Course.objects.get(c_id=key)
     if request.user not in course.register.all():
@@ -34,6 +36,7 @@ def book(request, key):
     return HttpResponseRedirect(reverse('registration'))
 
 
+@login_required(login_url='users:login')
 def cancel(request, key):
     course = Course.objects.get(c_id=key)
     if request.user not in course.register.all():
