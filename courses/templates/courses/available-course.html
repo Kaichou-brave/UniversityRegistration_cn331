@@ -1,0 +1,9 @@
+{% extends 'main.html' %}
+{% block content %}
+    {% for data in course %}
+        {% if data.status %}
+            {{ data.c_id }} {{ data.title }}
+        {% endif %}
+        <br>
+    {% endfor %}
+{% endblock %}

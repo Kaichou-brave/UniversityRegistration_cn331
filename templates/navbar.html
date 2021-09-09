@@ -1,0 +1,31 @@
+{% load static %}
+
+<!-- Header Section -->
+<header class="header">
+    <div class="container container--narrow">
+
+        <img src="{% static 'images/logo.svg' %} " alt="LOGO" width="162" height="42"/>
+
+
+        <nav class="header__nav">
+            <input type="checkbox" id="responsive-menu"/>
+            <label for="responsive-menu" class="toggle-menu">
+                <span>Menu</span>
+                <div class="toggle-menu__lines"></div>
+            </label>
+            <ul class="header__menu">
+                <li class="header__menuItem"><a href="{% url 'courses' %}">Course</a></li>
+                <li class="header__menuItem"><a href="{% url 'registration' %}">Registration</a></li>
+
+
+
+
+                {% if request.user.is_authenticated %}
+                    <li class="header__menuItem"><a href="{% url 'users:logout' %}" class="btn btn--sub">Logout</a></li>
+                {% else %}
+                    <li class="header__menuItem"><a href="{% url 'users:login' %}" class="btn btn--sub">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</header>

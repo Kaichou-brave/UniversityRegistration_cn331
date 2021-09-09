@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+{% block content %}
+    <div class="mumble-block">
+        <div class="table" align="center">
+            <table>
+                <tr>
+                    <th>Course ID</th>
+                    <th>Course Title</th>
+                    <th>Seat</th>
+                    <th>Taken</th>
+                    <th>Enroll</th>
+                </tr>
+
+
+                {% for data in course %}
+                    <tr>
+                        <td>{{ data.c_id }}</td>
+                        <td>{{ data.title }}</td>
+                        <td>{{ data.max_sit }}</td>
+                        <td>{{ data.sit_count }}</td>
+                        <td><a href="{% url 'book' data.c_id %}">Book this course</a></td>
+
+                    </tr>
+                    <br>
+                {% endfor %}
+            </table>
+
+        </div>
+    </div>
+{% endblock %}
