@@ -24,7 +24,25 @@
                     <br>
                 {% endfor %}
             </table>
+            {% if enroll.all.count > 0 %}
+                <table>
+                    <tr>
+                        <th>Course ID</th>
+                        <th>Course Title</th>
+                        <th>Cancel</th>
+                    </tr>
 
+                    {% for d in enroll %}
+                        <tr>
+                            <td>{{ d.c_id }}</td>
+                            <td>{{ d.title }}</td>
+                            <td><a href="{% url 'cancel' d.c_id %}">Cancel this course</a></td>
+
+                        </tr>
+                        <br>
+                    {% endfor %}
+                </table>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
