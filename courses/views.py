@@ -15,7 +15,7 @@ def registration(request):
 
 
 def courses(request):
-    context = {'course': Course.objects.all()}
+    context = {'course': Course.objects.all().order_by('c_id')}
     return render(request, 'courses/available-course.html', context)
 
 

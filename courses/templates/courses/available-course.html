@@ -1,9 +1,41 @@
 {% extends 'main.html' %}
+
 {% block content %}
-    {% for data in course %}
-        {% if data.status %}
-            {{ data.c_id }} {{ data.title }}
-        {% endif %}
-        <br>
-    {% endfor %}
+
+    <div class="mumble-block">
+
+        <div class="table" align="center">
+
+            <table>
+
+                <tr>
+                    <th>Course ID</th>
+                    <th>Course Title</th>
+                    <th>Semester</th>
+                    <th>Year</th>
+                    <th>Max sit</th>
+                    <th>Status</th>
+                </tr>
+
+
+                {% for data in course %}
+                    <tr>
+                        <td>{{ data.c_id }}</td>
+                        <td>{{ data.title }}</td>
+                        <td>{{ data.semester }}</td>
+                        <td>{{ data.year }}</td>
+                        <td>{{ data.max_sit }}</td>
+                        <td>{{ data.status }}</td>
+                        <td><a href="{% url 'course' data.c_id %}">info</a></td>
+
+                    </tr>
+                    <br>
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    </div>
+
 {% endblock %}
