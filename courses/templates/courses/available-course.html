@@ -1,5 +1,6 @@
 {% extends 'main.html' %}
 {% block content %}
+    <p> <b> This is our availabe course </b> </p1> <br>
     {% for data in course %}
         {% if data.status %}
             {{ data.c_id }} {{ data.title }}

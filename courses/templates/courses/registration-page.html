@@ -3,6 +3,10 @@
     <div class="mumble-block">
         <div class="table" align="center">
             <table>
+                <col width= "100px"/>
+                <col width= "100px"/>
+                <col width= "100px"/>
+                <col width= "100px"/>
                 <tr>
                     <th>Course ID</th>
                     <th>Course Title</th>
@@ -13,6 +17,7 @@
 
 
                 {% for data in course %}
+                    {% if data.status %}
                     <tr>
                         <td>{{ data.c_id }}</td>
                         <td>{{ data.title }}</td>
@@ -21,6 +26,7 @@
                         <td><a href="{% url 'book' data.c_id %}">Book this course</a></td>
 
                     </tr>
+                    {% endif %}
                     <br>
                 {% endfor %}
             </table>
