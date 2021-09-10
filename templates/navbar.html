@@ -3,9 +3,9 @@
 <!-- Header Section -->
 <header class="header">
     <div class="container container--narrow">
-
-        <img src="{% static 'images/logo.svg' %} " alt="LOGO" width="162" height="42"/>
-
+        <a href="{% url 'users:index' %}" class="header__logo">
+            <img src="{% static 'images/logo.svg' %} " alt="Office of the Registrar"/>
+        </a>
 
         <nav class="header__nav">
             <input type="checkbox" id="responsive-menu"/>

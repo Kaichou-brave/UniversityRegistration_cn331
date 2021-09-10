@@ -1,12 +1,20 @@
 {% extends 'main.html' %}
+
 {% block content %}
+
     <div class="mumble-block">
+
         <div class="table" align="center">
+
             <table>
+<<<<<<< HEAD
                 <col width= "100px"/>
                 <col width= "100px"/>
                 <col width= "100px"/>
                 <col width= "100px"/>
+=======
+
+>>>>>>> d58a11708a5b67f32f3417062785ccd156d982e9
                 <tr>
                     <th>Course ID</th>
                     <th>Course Title</th>
@@ -29,9 +37,13 @@
                     {% endif %}
                     <br>
                 {% endfor %}
+
             </table>
+
             {% if enroll.all.count > 0 %}
+
                 <table>
+
                     <tr>
                         <th>Course ID</th>
                         <th>Course Title</th>
@@ -47,8 +59,13 @@
                         </tr>
                         <br>
                     {% endfor %}
+
                 </table>
+
             {% endif %}
+
         </div>
+
     </div>
+
 {% endblock %}

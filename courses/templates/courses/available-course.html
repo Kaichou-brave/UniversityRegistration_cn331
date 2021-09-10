@@ -1,5 +1,7 @@
 {% extends 'main.html' %}
+
 {% block content %}
+<<<<<<< HEAD
     <p> <b> This is our availabe course </b> </p1> <br>
     {% for data in course %}
         {% if data.status %}
@@ -7,4 +9,43 @@
         {% endif %}
         <br>
     {% endfor %}
+=======
+
+    <div class="mumble-block">
+
+        <div class="table" align="center">
+
+            <table>
+
+                <tr>
+                    <th>Course ID</th>
+                    <th>Course Title</th>
+                    <th>Semester</th>
+                    <th>Year</th>
+                    <th>Max sit</th>
+                    <th>Status</th>
+                </tr>
+
+
+                {% for data in course %}
+                    <tr>
+                        <td>{{ data.c_id }}</td>
+                        <td>{{ data.title }}</td>
+                        <td>{{ data.semester }}</td>
+                        <td>{{ data.year }}</td>
+                        <td>{{ data.max_sit }}</td>
+                        <td>{{ data.status }}</td>
+                        <td><a href="{% url 'course' data.c_id %}">info</a></td>
+
+                    </tr>
+                    <br>
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    </div>
+
+>>>>>>> d58a11708a5b67f32f3417062785ccd156d982e9
 {% endblock %}
