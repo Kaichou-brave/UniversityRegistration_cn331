@@ -10,10 +10,11 @@ from .models import Course
 
 @login_required(login_url='users:login')
 def registration(request):
-    context = {'course': Course.objects.all().order_by('c_id'), 'enroll': Course.objects.filter(register=request.user)}
+    context = {'course': Course.objects.all().order_by(
+        'c_id'), 'enroll': Course.objects.filter(register=request.user)}
     return render(request, 'courses/registration-page.html', context)
 
-
+@login_required(login_url='users:login')
 def courses(request):
     context = {'course': Course.objects.all().order_by('c_id')}
     return render(request, 'courses/available-course.html', context)

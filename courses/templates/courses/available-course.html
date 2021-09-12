@@ -2,15 +2,37 @@
 
 {% block content %}
 
-    <p> <b> This is our availabe course </b> </p1> <br>
-    {% for data in course %}
-        {% if data.status %}
-            {{ data.c_id }} {{ data.title }}
-        {% endif %}
-        <br>
-    {% endfor %}
+<p> <b> This is our availabe course </b> </p1>
+<div class="mumble-block">
+    <div class="table" align="center">
+        <table>
+            <tr>
+                <th>Course ID</th>
+                <th>Course Title</th>
+                <th>Semester</th>
+                <th>Year</th>
+                <th>Max sit</th>
+                <th>Status</th>
+            </tr>
+            {% for data in course %}
+            {% if data.status %}
+            <tr>
+                <td>{{ data.c_id }}</td>
+                <td>{{ data.title }}</td>
+                <td>{{ data.semester }}</td>
+                <td>{{ data.year }}</td>
+                <td>{{ data.max_sit }}</td>
+                <td>{{ data.status }}</td>
+                <td><a href="{% url 'course' data.c_id %}">info</a></td>
+            </tr>
+            <br>
+            {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+    <br>
 
-
+    <p> <b> This is your course </b> </p1> <br>
     <div class="mumble-block">
 
         <div class="table" align="center">
@@ -28,17 +50,17 @@
 
 
                 {% for data in course %}
-                    <tr>
-                        <td>{{ data.c_id }}</td>
-                        <td>{{ data.title }}</td>
-                        <td>{{ data.semester }}</td>
-                        <td>{{ data.year }}</td>
-                        <td>{{ data.max_sit }}</td>
-                        <td>{{ data.status }}</td>
-                        <td><a href="{% url 'course' data.c_id %}">info</a></td>
+                <tr>
+                    <td>{{ data.c_id }}</td>
+                    <td>{{ data.title }}</td>
+                    <td>{{ data.semester }}</td>
+                    <td>{{ data.year }}</td>
+                    <td>{{ data.max_sit }}</td>
+                    <td>{{ data.status }}</td>
+                    <td><a href="{% url 'course' data.c_id %}">info</a></td>
 
-                    </tr>
-                    <br>
+                </tr>
+                <br>
                 {% endfor %}
 
             </table>
@@ -48,4 +70,4 @@
     </div>
 
 
-{% endblock %}
+    {% endblock %}

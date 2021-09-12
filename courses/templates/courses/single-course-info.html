@@ -1,7 +1,12 @@
 {% extends 'main.html' %}
 
 {% block content %}
-    {% for id in courses.register.all %}
-    <h1>{{ id }}</h1>
-    {% endfor %}
+<h1>{{ course.c_id }} {{ course.title }} </h1>
+<p> Registration Status : {{ course.status }} </p>
+<p> Course Seats {{ course.max_sit }} </p>
+<p> Course Taken {{ course.sit_count }}</p>
+<br>
+<button onclick="location.href = '/courses';">
+    Return to your course page
+</button>
 {% endblock %}
