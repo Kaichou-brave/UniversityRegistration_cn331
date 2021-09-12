@@ -6,6 +6,19 @@
 <p> Course Seats {{ course.max_sit }} </p>
 <p> Course Taken {{ course.sit_count }}</p>
 <br>
+{% if user.is_staff %}
+<p> <b> Student List </b> </p1>
+<div class="mumble-block">
+    <div class="table" align="center">
+        <table>
+            <tr>
+                <th>Student List</th>
+            </tr>
+            <td>{{ course.register }}</td>
+        </table>
+    </div>
+</div>
+{% endif %}
 <button onclick="location.href = '/courses';">
     Return to your course page
 </button>
