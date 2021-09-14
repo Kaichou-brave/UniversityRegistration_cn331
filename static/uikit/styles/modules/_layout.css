@@ -20,6 +20,13 @@
   flex-basis: 48%;
 }
 
+.layout > .column.column--leftright {
+  flex-basis: 25%;
+}
+
+.layout > .column.column--middle {
+  flex-basis: 50%;
+}
 @media screen and (max-width: 1080px) {
   .layout > .column {
     flex-basis: 100% !important;
