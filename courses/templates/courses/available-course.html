@@ -1,92 +1,53 @@
 {% extends 'main.html' %}
 
 {% block content %}
-{% if user.is_staff %}
-<br>
-<p> <b> Course List </b> </p>
-<div class="table" align="center">
-    <table>
-        <tr>
-            <th>Course ID</th>
-            <th>Course Title</th>
-            <th>Semester</th>
-            <th>Year</th>
-            <th>Max sit</th>
-            <th>Status</th>
-        </tr>
-        {% for data in course %}
-        <tr>
-            <td>{{ data.c_id }}</td>
-            <td>{{ data.title }}</td>
-            <td>{{ data.semester }}</td>
-            <td>{{ data.year }}</td>
-            <td>{{ data.max_sit }}</td>
-            <td>{{ data.status }}</td>
-            <td><a href="{% url 'course' data.c_id %}">info</a></td>
-        </tr>
-        <br>
-        {% endfor %}
-    </table>
-</div>
-</div>
 
-{% else %}
-<div class="layout">
-    <div class="column column--leftright"></div>
-    <div class="column column--middle">
-        <p> <b> This is our availabe course </b> </p>
-        <div class="table" ,align="middle">
-            <table>
-                <tr>
-                    <th>Course ID</th>
-                    <th>Course Title</th>
-                    <th>Semester</th>
-                    <th>Year</th>
-                    <th>Max sit</th>
-                    <th>Status</th>
-                </tr>
-                {% for data in course %}
-                {% if data.status %}
-                <tr>
-                    <td>{{ data.c_id }}</td>
-                    <td>{{ data.title }}</td>
-                    <td>{{ data.semester }}</td>
-                    <td>{{ data.year }}</td>
-                    <td>{{ data.max_sit }}</td>
-                    <td>{{ data.status }}</td>
-                    <td><a href="{% url 'course' data.c_id %}">info</a></td>
-                </tr>
-                {% endif %}
-                {% endfor %}
-            </table>
+    <!---layout--->
+    <div class="layout">
+
+        <!---column left--->
+        <div class="column column--leftright"></div>
+
+        <!---column middle--->
+        <div class="column column--middle">
+
+            <br>
+            {% if user.is_staff %}
+                <p><b> Course List </b></p>
+            {% else %}
+                <p><b> This is our availabe course </b></p>
+            {% endif %}
+            <br>
+
+            <!---table in middle column--->
+            <div class="table" align="center">
+                <table>
+                    <tr>
+                        <th>Course ID</th>
+                        <th>Course Title</th>
+                        <th>Semester</th>
+                        <th>Year</th>
+                        <th>Max sit</th>
+                        <th>Status</th>
+                    </tr>
+                    {% for data in course %}
+                        <tr>
+                            <td>{{ data.c_id }}</td>
+                            <td>{{ data.title }}</td>
+                            <td>{{ data.semester }}</td>
+                            <td>{{ data.year }}</td>
+                            <td>{{ data.max_sit }}</td>
+                            <td>{{ data.status }}</td>
+                            <td><a href="{% url 'course' data.c_id %}">info</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
-        <br>
-        <p> <b> This is your course </b> </p>
-        <div class="table" ,align="middle">
-            <table>
-                <tr>
-                    <th>Course ID</th>
-                    <th>Course Title</th>
-                    <th>Semester</th>
-                    <th>Year</th>
-                    <th>Max sit</th>
-                    <th>Status</th>
-                </tr>
-                {% for data in course %}
-                <tr>
-                    <td>{{ data.c_id }}</td>
-                    <td>{{ data.title }}</td>
-                    <td>{{ data.semester }}</td>
-                    <td>{{ data.year }}</td>
-                    <td>{{ data.max_sit }}</td>
-                    <td>{{ data.status }}</td>
-                    <td><a href="{% url 'course' data.c_id %}">info</a></td>
-                </tr>
-                {% endfor %}
-            </table>
-        </div>
+
+        <!---column right--->
+        <div class="column column--leftright"></div>
+
     </div>
-    <div class="column column--leftright"></div>
-</div>
-{% endif %}
+
 {% endblock %}

@@ -1,9 +1,8 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
-from django.urls import reverse
-
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.urls import reverse
 
 from .models import Course
 
@@ -13,6 +12,7 @@ def registration(request):
     context = {'course': Course.objects.all().order_by(
         'c_id'), 'enroll': Course.objects.filter(register=request.user)}
     return render(request, 'courses/registration-page.html', context)
+
 
 @login_required(login_url='users:login')
 def courses(request):

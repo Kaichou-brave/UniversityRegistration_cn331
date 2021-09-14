@@ -405,7 +405,7 @@ img {
   Table
 ========================*/
 .table {
-    border: 1px#ddd;
+    border: 1px #ddd;
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;

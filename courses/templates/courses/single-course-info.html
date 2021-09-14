@@ -1,28 +1,41 @@
 {% extends 'main.html' %}
 
 {% block content %}
-    <h1>{{ course.c_id }} {{ course.title }} </h1>
-    <p> Registration Status : {{ course.status }} </p>
-    <p> Course Seats {{ course.max_sit }} </p>
-    <p> Course Taken {{ course.sit_count }}</p>
-    <br>
-    {% if user.is_staff %}
-        <p><b> Student List </b> </p1>
-        <div class="mumble-block">
-            <div class="table" align="center">
-                <table>
-                    <tr>
-                        <th>Student List</th>
-                    </tr>
-                    {% for foo in course.register.all %}
-                        <td>{{ foo }}</td>
-                    {% endfor %}
 
-                </table>
-            </div>
+    <!---layout--->
+    <div class="layout">
+
+        <!---column left--->
+        <div class="column column--leftright"></div>
+
+        <!---column middle--->
+        <div class="column column--middle">
+            <h3>{{ course.c_id }} {{ course.title }} </h3>
+            <p> Registration Status : {{ course.status }} </p>
+            <p> Course Seats {{ course.max_sit }} </p>
+            <p> Course Taken {{ course.sit_count }}</p>
+            <br>
+            {% if user.is_staff %}
+                <p1><b> Student List </b></p1>
+                <div class="table" align="center">
+                    <table>
+                        <tr>
+                            <th>Student List</th>
+                        </tr>
+                        {% for foo in course.register.all %}
+                            <td>{{ foo }}</td>
+                        {% endfor %}
+
+                    </table>
+                </div>
+            {% endif %}
+            <button class="btn btn--sm" onclick="location.href = '/courses';">
+                Return to your course page
+            </button>
         </div>
-    {% endif %}
-    <button onclick="location.href = '/courses';">
-        Return to your course page
-    </button>
+
+        <!---column right--->
+        <div class="column column--leftright"></div>
+
+    </div>
 {% endblock %}

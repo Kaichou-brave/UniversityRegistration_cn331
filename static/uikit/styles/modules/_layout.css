@@ -21,11 +21,11 @@
 }
 
 .layout > .column.column--leftright {
-  flex-basis: 25%;
+  flex-basis: 20%;
 }
 
 .layout > .column.column--middle {
-  flex-basis: 50%;
+  flex-basis: 60%;
 }
 @media screen and (max-width: 1080px) {
   .layout > .column {

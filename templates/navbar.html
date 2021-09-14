@@ -13,18 +13,15 @@
                 <span>Menu</span>
                 <div class="toggle-menu__lines"></div>
             </label>
-            {% if user.is_staff %}
             <ul class="header__menu">
-                <li class="header__menuItem"><a href="{% url 'courses' %}">Course</a></li>
-            {% else %}
-            <ul class="header__menu">
-                <li class="header__menuItem"><a href="{% url 'courses' %}">Course</a></li>
-                <li class="header__menuItem"><a href="{% url 'registration' %}">Registration</a></li>
-            {% endif %}
+                {% if user.is_staff %}
+                    <li class="header__menuItem"><a href="{% url 'courses' %}">Course</a></li>
+                {% else %}
+                    <li class="header__menuItem"><a href="{% url 'courses' %}">Course</a></li>
+                    <li class="header__menuItem"><a href="{% url 'registration' %}">Registration</a></li>
+                {% endif %}
 
-
-
-
+                <!--- login/logout --->
                 {% if request.user.is_authenticated %}
                     <li class="header__menuItem"><a href="{% url 'users:logout' %}" class="btn btn--sub">Logout</a></li>
                 {% else %}
