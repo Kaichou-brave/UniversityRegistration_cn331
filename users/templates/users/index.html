@@ -1,21 +1,29 @@
 {% extends "main.html" %}
 
 {% block content %}
-{% if user.is_staff %}
-<h1>Welcome Staff , {{ request.user.first_name }}</h1>
-{% else %}
-<h1>Welcome, {{ request.user.first_name }}</h1>
-{% endif %}
-<p>
-    Username: {{ request.user.username }} <br>
-    Email: {{ request.user.email }}
-</p>
+    {% if user.is_staff %}
+        <h1>Welcome Staff , {{ request.user.first_name }}</h1>
+    {% else %}
+        <h1>Welcome, {{ request.user.first_name }}</h1>
+    {% endif %}
+    <p>
+        Username: {{ request.user.username }} <br>
+        Email: {{ request.user.email }}
+    </p>
 
-<br>
-<p1> <b> Instruction </b> </p1>
-<p>
-    <li> Click Course, to view your course </li>
-    <li> Click Registration, to register your course </li>
-</p>
+    <br>
+    <p1><b> Instruction </b></p1>
+
+    <p>
+        {% if user.is_staff %}
+            <li> Click Course, to view course info</li>
+
+        {% else %}
+            <li> Click Course, to view your course</li>
+            <li> Click Registration, to register your course</li>
+
+        {% endif %}
+
+    </p>
 
 {% endblock %}
