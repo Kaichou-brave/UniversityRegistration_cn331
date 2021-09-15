@@ -38,3 +38,7 @@ def logout_view(request):
     return render(request, "users/login.html", {
         "messages": messages.get_messages(request)
     })
+
+
+def forget_password(request):
+    return render(request, "users/forget-password.html")

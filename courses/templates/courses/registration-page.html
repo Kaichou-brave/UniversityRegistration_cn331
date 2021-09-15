@@ -27,7 +27,7 @@
 
                     <!---get all available course--->
                     {% for data in course %}
-                        {% if data.status %}
+                        {% if data.status and not data.register.filter %}
                             <tr>
                                 <td>{{ data.c_id }}</td>
                                 <td>{{ data.title }}</td>
@@ -71,4 +71,5 @@
         <!---column right--->
         <div class="column column--leftright"></div>
     </div>
+
 {% endblock %}

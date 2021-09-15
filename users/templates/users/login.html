@@ -1,5 +1,7 @@
 {% extends 'main.html' %}
+
 {% load static %}
+
 {% block content %}
 
 <div class="auth">
@@ -31,7 +33,7 @@
             </div>
             <div class="auth__actions">
                 <input class="btn btn--sub btn--lg" type="submit" value="Log In" />
-                <a href="forgetpassword.html">Forget Password?</a>
+                <a href="{% url 'users:forgetpwd' %}">Forget Password?</a>
             </div>
         </form>
 
