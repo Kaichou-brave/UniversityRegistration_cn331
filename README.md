@@ -27,3 +27,12 @@
 **Folder: users**
 ใช้สำหรับเก็บข้อมูลหน้าต่าง Login เพื่อใช้เข้าหน้าเว็บ และหน้าลืมรหัสผ่าน (forgot password) 
 ที่เชื่่อมต่อกับ Database ของ User ที่ใช้ในการ Login เข้าหน้าเว็บ
+
+**Interface ของ Website เมื่อ Login ผ่านฝั่งของ User**
+![](https://github.com/Kaichou-brave/UniversityRegistration_cn331/blob/main/webscreenshot/pic01.png)
+**Interface ของ Website เมื่อ Login ผ่านฝั่งของ Staff**
+![](https://github.com/Kaichou-brave/UniversityRegistration_cn331/blob/main/webscreenshot/pic02.png)
+**Interface เมื่อกดเข้าไปดูข้อมูลของแต่ละ Coure (Staff จะเห็นรายชื่อนักเรียนที่ลงทะเบียนในคอร์สนี้ด้วย)**
+![](https://github.com/Kaichou-brave/UniversityRegistration_cn331/blob/main/webscreenshot/pic03.png)
+**การลงทะเบียนของฝั่ง User**
+![](https://github.com/Kaichou-brave/UniversityRegistration_cn331/blob/main/webscreenshot/pic04.png)
