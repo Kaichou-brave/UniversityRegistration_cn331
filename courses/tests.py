@@ -50,21 +50,22 @@ class CourseTestCase(TestCase):
         response = self.client.get(reverse('courses:course', args=(course.c_id,)))
         self.assertEqual(response.status_code, 200)
 
-    def test_book_view(self):
+    def test_authenticated_user_can_book_course(self):
         self.client.login(username='jj', password='somepass@jj')
 
         course = Course.objects.first()
         response = self.client.get(reverse('courses:book', args=(course.c_id,)))
         self.assertEqual(course.register.first(), User.objects.get(username='jj'))
 
-    def test_book_view_status(self):
+    def test_close_course_in_book_when_full(self):
         self.client.login(username='brave', password='somepass@brave')
+
         course = Course.objects.get(c_id='test2')
         response = self.client.get(reverse('courses:book', args=(course.c_id,)))
         course.refresh_from_db()
         self.assertEqual(course.status, False)
 
-    def test_cancel_view(self):
+    def test_authenticated_user_can_cancel_course(self):
         self.client.login(username='brave', password='somepass@brave')
 
         course = Course.objects.first()
