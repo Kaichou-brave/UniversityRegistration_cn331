@@ -34,7 +34,7 @@ def book(request, key):
         if course.sit_count == course.max_sit:
             course.status = False
         course.save()
-    return HttpResponseRedirect(reverse('registration'))
+    return HttpResponseRedirect(reverse('courses:registration'))
 
 
 @login_required(login_url='users:login')
@@ -49,4 +49,4 @@ def cancel(request, key):
         if course.sit_count != course.max_sit:
             course.status = True
         course.save()
-    return HttpResponseRedirect(reverse("registration"))
+    return HttpResponseRedirect(reverse("courses:registration"))
