@@ -33,7 +33,7 @@
                                 <td>{{ data.title }}</td>
                                 <td>{{ data.max_sit }}</td>
                                 <td>{{ data.sit_count }}</td>
-                                <td><a href="{% url 'book' data.c_id %}">Book this course</a></td>
+                                <td><a href="{% url 'courses:book' data.c_id %}">Book this course</a></td>
                             </tr>
                         {% endif %}
                     {% endfor %}
@@ -60,7 +60,11 @@
                                 <td>{{ d.title }}</td>
                                 <td>{{ d.semester }}</td>
                                 <td>{{ d.year }}</td>
+<<<<<<< HEAD
                                 <td><a href="{% url 'cancel' d.c_id %}">Cacel this course</a></td>
+=======
+                                <td><a href="{% url 'courses:cancel' d.c_id %}">Cancel this course</a></td>
+>>>>>>> main
                             </tr>
                         {% endfor %}
                     </table>
