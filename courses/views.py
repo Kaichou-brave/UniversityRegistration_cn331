@@ -21,8 +21,8 @@ def courses(request):
 
 
 def course(request, pk):
-    courseObj = Course.objects.get(c_id=pk)
-    return render(request, 'courses/single-course-info.html', {'course': courseObj})
+    context = {'course': Course.objects.get(c_id=pk)}
+    return render(request, 'courses/single-course-info.html', context)
 
 
 @login_required(login_url='users:login')
@@ -40,8 +40,6 @@ def book(request, key):
 @login_required(login_url='users:login')
 def cancel(request, key):
     course = Course.objects.get(c_id=key)
-    if request.user not in course.register.all():
-        messages.warning(request, "You are not enroll in this course yet")
     if request.user in course.register.all():
         messages.success(request, "Course Canceled")
         course.register.remove(request.user)

@@ -31,6 +31,12 @@ class CourseTestCase(TestCase):
         response = self.client.get(reverse('courses:registration'))
         self.assertEqual(response.status_code, 200)
 
+    def test_registration_view_context(self):
+        self.client.login(username='jj', password='somepass@jj')
+
+        response = self.client.get(reverse('courses:registration'))
+        self.assertEqual(response.context['course'].count(), Course.objects.count())
+
     def test_courses_view(self):
         self.client.login(username='brave', password='somepass@brave')
 
@@ -38,13 +44,13 @@ class CourseTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_courses_view_context(self):
-        self.client.login(username='jj', password='somepass@jj')
+        self.client.login(username='brave', password='somepass@brave')
 
         response = self.client.get(reverse('courses:courses'))
         self.assertEqual(response.context['course'].count(), Course.objects.count())
 
     def test_course_view(self):
-        self.client.login(username='brave', password='somepass@brave')
+        self.client.login(username='jj', password='somepass@jj')
 
         course = Course.objects.first()
         response = self.client.get(reverse('courses:course', args=(course.c_id,)))
