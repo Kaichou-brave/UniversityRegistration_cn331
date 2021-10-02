@@ -38,7 +38,7 @@
                             <td>{{ data.year }}</td>
                             <td>{{ data.max_sit }}</td>
                             <td>{{ data.status }}</td>
-                            <td><a href="{% url 'course' data.c_id %}">info</a></td>
+                            <td><a href="{% url 'courses:course' data.c_id %}">info</a></td>
                         </tr>
                     {% endfor %}
                 </table>

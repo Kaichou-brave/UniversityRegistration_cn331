@@ -15,10 +15,10 @@
             </label>
             <ul class="header__menu">
                 {% if user.is_staff %}
-                    <li class="header__menuItem"><a href="{% url 'courses' %}">Course</a></li>
+                    <li class="header__menuItem"><a href="{% url 'courses:courses' %}">Course</a></li>
                 {% else %}
-                    <li class="header__menuItem"><a href="{% url 'courses' %}">Course</a></li>
-                    <li class="header__menuItem"><a href="{% url 'registration' %}">Registration</a></li>
+                    <li class="header__menuItem"><a href="{% url 'courses:courses' %}">Course</a></li>
+                    <li class="header__menuItem"><a href="{% url 'courses:registration' %}">Registration</a></li>
                 {% endif %}
 
                 <!--- login/logout --->
