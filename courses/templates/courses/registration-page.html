@@ -60,11 +60,9 @@
                                 <td>{{ d.title }}</td>
                                 <td>{{ d.semester }}</td>
                                 <td>{{ d.year }}</td>
-<<<<<<< HEAD
-                                <td><a href="{% url 'cancel' d.c_id %}">Cacel this course</a></td>
-=======
+
                                 <td><a href="{% url 'courses:cancel' d.c_id %}">Cancel this course</a></td>
->>>>>>> main
+
                             </tr>
                         {% endfor %}
                     </table>
