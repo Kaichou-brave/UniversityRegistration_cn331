@@ -37,6 +37,10 @@ class CourseTestCase(TestCase):
         response = self.client.get(reverse('courses:registration'))
         self.assertEqual(response.context['course'].count(), Course.objects.count())
 
+    def test_guest_need_login_access_registration_page(self):
+        response = self.client.get(reverse('courses:registration'))
+        self.assertEqual(response.status_code, 302)
+
     def test_courses_view(self):
         self.client.login(username='brave', password='somepass@brave')
 
@@ -71,10 +75,34 @@ class CourseTestCase(TestCase):
         course.refresh_from_db()
         self.assertEqual(course.status, False)
 
-    def test_authenticated_user_can_cancel_course(self):
+    def test_guest_cannot_book_course(self):
+        course = Course.objects.first()
+        response = self.client.get(reverse('courses:book', args=(course.c_id,)))
+        self.assertEqual(response.status_code, 302)
+
+    def test_redirect_book_course(self):
         self.client.login(username='brave', password='somepass@brave')
 
         course = Course.objects.first()
-        course.register.add(User.objects.get(username='brave'))
+        response = self.client.get(reverse('courses:book', args=(course.c_id,)))
+        self.assertRedirects(response, reverse('courses:registration'))
+
+    def test_authenticated_user_can_cancel_course(self):
+        self.client.login(username='jj', password='somepass@jj')
+
+        course = Course.objects.first()
+        course.register.add(User.objects.get(username='jj'))
         response = self.client.get(reverse('courses:cancel', args=(course.c_id,)))
         self.assertEqual(course.register.count(), 0)
+
+    def test_guest_cannot_cancel_course(self):
+        course = Course.objects.first()
+        response = self.client.get(reverse('courses:cancel', args=(course.c_id,)))
+        self.assertEqual(response.status_code, 302)
+
+    def test_redirect_cancel_course(self):
+        self.client.login(username='jj', password='somepass@jj')
+
+        course = Course.objects.first()
+        response = self.client.get(reverse('courses:cancel', args=(course.c_id,)))
+        self.assertRedirects(response, reverse('courses:registration'))
